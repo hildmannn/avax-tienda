@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){try{var k='avax-theme',t=localStorage.getItem(k);if(t!=='dark'&&t!=='light'){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <style id="avax-theme-vars">
-:root{color-scheme:light;--bg:#ffffff;--surf:#ffffff;--surf2:#f2f5f9;--tile:#0b0f16;--tileb:#131720;--tx:#131720;--tx1:#454c5b;--tx2:#333a47;--mut:#7d8595;--mut2:#8b93a3;--mut3:#667082;--mut4:#97a1b3;--mut5:#8a94a8;--bd1:#d9dfe9;--bd2:#e9edf3;--bd3:#e2e7ef;--bd4:#eef1f6;--bd5:#e8ecf2;--bd6:#dde3ec;--bd7:#dbe2ec;--navbg:rgba(255,255,255,.8);--navbd:rgba(19,23,32,.07);}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0b0f16;--surf:#171d28;--surf2:#1c2431;--tile:#151c27;--tileb:#1d2634;--tx:#eef1f6;--tx1:#b8c1ce;--tx2:#cbd3de;--mut:#949dab;--mut2:#8b94a4;--mut3:#8b95a5;--mut4:#8892a4;--mut5:#949eb2;--bd1:#2b333f;--bd2:#262e39;--bd3:#29313d;--bd4:#232a35;--bd5:#272f3a;--bd6:#2b333f;--bd7:#2a323e;--navbg:rgba(12,16,23,.82);--navbd:rgba(255,255,255,.08);}
+:root{color-scheme:light;--bg:#ffffff;--surf:#ffffff;--surf2:#f2f5f9;--tile:#0b0f16;--tileb:#131720;--tx:#131720;--tx1:#454c5b;--tx2:#333a47;--mut:#7d8595;--mut2:#8b93a3;--mut3:#667082;--mut4:#97a1b3;--mut5:#8a94a8;--bd1:#d9dfe9;--bd2:#e9edf3;--bd3:#e2e7ef;--bd4:#eef1f6;--bd5:#e8ecf2;--bd6:#dde3ec;--bd7:#dbe2ec;--navbg:rgba(255,255,255,.8);--navbd:rgba(19,23,32,.07);--sect:#ffffff;--sectcard:#f6f8fc;--sectbd:#e6ebf2;--secttx:#131720;--secttx2:#454c5b;--usadobg:#f2f5f9;}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0b0f16;--surf:#171d28;--surf2:#1c2431;--tile:#151c27;--tileb:#1d2634;--tx:#eef1f6;--tx1:#b8c1ce;--tx2:#cbd3de;--mut:#949dab;--mut2:#8b94a4;--mut3:#8b95a5;--mut4:#8892a4;--mut5:#949eb2;--bd1:#2b333f;--bd2:#262e39;--bd3:#29313d;--bd4:#232a35;--bd5:#272f3a;--bd6:#2b333f;--bd7:#2a323e;--navbg:rgba(12,16,23,.82);--navbd:rgba(255,255,255,.08);--sect:#0a0e15;--sectcard:#10151f;--sectbd:#202939;--secttx:#eef1f6;--secttx2:#cbd3de;--usadobg:#0b0f16;}
 html{background:var(--bg);}
 </style>
 <script src="assets/a427479a-ec38-41d4-9f94-5f56ba68dd8f.js" crossorigin="anonymous"></script>
@@ -289,17 +289,22 @@ html{background:var(--bg);}
     ::selection { background: rgba(10,92,255,.18); }
     @keyframes avxFade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes avxUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Toggle de tema claro / oscuro */
+    .thm { position: relative; box-sizing: border-box; width: 58px; height: 30px; flex: none; padding: 0; border-radius: 999px; border: 1px solid var(--bd1); background: var(--surf2); cursor: pointer; -webkit-appearance: none; appearance: none; transition: background .25s, border-color .25s; }
+    .thm:hover { border-color: var(--mut); }
+    .thm svg { position: absolute; top: 50%; width: 15px; height: 15px; transform: translateY(-50%); transition: color .25s, opacity .25s; pointer-events: none; }
+    .thm .thm-sun { left: 8px; color: #f5a524; }
+    .thm .thm-moon { right: 8px; color: var(--mut); opacity: .55; }
+    .thm .thm-knob { position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; border-radius: 999px; background: #ffffff; box-shadow: 0 2px 6px rgba(10,15,25,.28); transition: transform .3s cubic-bezier(.22,1,.3,1), background .25s; }
+    :root[data-theme="dark"] .thm { background: #0e141d; }
+    :root[data-theme="dark"] .thm .thm-knob { transform: translateX(28px); background: #e8edf6; }
+    :root[data-theme="dark"] .thm .thm-sun { color: var(--mut); opacity: .55; }
+    :root[data-theme="dark"] .thm .thm-moon { color: #9cc0ff; opacity: 1; }
   </style>
 </helmet>
 
 <div style="font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif; color: var(--tx); background: var(--bg); min-width: 320px">
-
-  <!-- ANNOUNCEMENT -->
-  <sc-if value="{{ showPromo }}" hint-placeholder-val="{{ true }}">
-    <div style="background: var(--tile); color: #c8d6f2; text-align: center; padding: 9px 16px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .04em">
-      ENVÍOS EN EL DÍA EN RÍO CUARTO Y ZONA <span style="color: var(--ax, #0A5CFF); margin: 0 10px">●</span> 3 Y 6 CUOTAS SIN INTERÉS <span style="color: var(--ax, #0A5CFF); margin: 0 10px">●</span> PAGÁ EN PESOS O USD
-    </div>
-  </sc-if>
 
   <!-- NAV -->
   <nav data-screen-label="Nav" style="position: sticky; top: 0; z-index: 60; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); background: var(--navbg); border-bottom: 1px solid var(--navbd)">
@@ -311,7 +316,11 @@ html{background:var(--bg);}
         <button onclick="{{ goUsados }}" style="background: none; border: none; padding: 0; cursor: pointer; color: var(--tx1); font-size: 13.5px; font-weight: 500" style-hover="color: var(--tx)">Usados</button>
         <a href="#servicio" style="text-decoration: none; color: var(--tx1); font-size: 13.5px; font-weight: 500" style-hover="color: var(--tx)">Servicio técnico</a>
       </div>
-      <button onclick="{{ toggleTheme }}" title="Cambiar tema claro / oscuro" aria-label="Cambiar tema" style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex: none; border-radius: 999px; border: 1px solid var(--bd1); background: var(--surf); color: var(--tx); cursor: pointer; font-size: 16px; line-height: 1" style-hover="background: var(--surf2)">{{ themeGlyph }}</button>
+      <button onclick="{{ toggleTheme }}" class="thm" role="switch" title="Cambiar tema claro / oscuro" aria-label="Cambiar tema claro u oscuro">
+        <svg class="thm-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="thm-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+        <span class="thm-knob"></span>
+      </button>
       <button onclick="{{ openCart }}" style="display: flex; align-items: center; gap: 8px; background: var(--tileb); color: #fff; border: none; border-radius: 999px; padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer" style-hover="background: #2a3140">
         Carrito
         <span style="background: var(--ax, #0A5CFF); color: #fff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 11.5px; font-family: 'JetBrains Mono', monospace; padding: 0 5px">{{ cartCount }}</span>
@@ -334,7 +343,7 @@ html{background:var(--bg);}
         <img src="assets/img/hero.jpg" alt="iPhone 15 Pro" style="display: block; width: 100%; height: clamp(300px, 44vw, 500px); object-fit: cover; border-radius: 28px; box-shadow: 0 40px 90px -20px color-mix(in srgb, var(--ax, #0A5CFF) 30%, rgba(10,15,25,.25))">
       </sc-if>
       <sc-if value="{{ heroImgFail }}" hint-placeholder-val="{{ false }}">
-        <div style="width: 100%; height: clamp(300px, 44vw, 500px); border-radius: 28px; background: repeating-linear-gradient(45deg, var(--bd4) 0 14px, #f6f8fb 14px 28px); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mut2)">[ foto hero: iPhone 15 Pro ]</div>
+        <div style="width: 100%; height: clamp(300px, 44vw, 500px); border-radius: 28px; background: repeating-linear-gradient(45deg, var(--bd4) 0 14px, var(--surf2) 14px 28px); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mut2)">[ foto hero: iPhone 15 Pro ]</div>
       </sc-if>
       <button onclick="{{ openHeroQV }}" style="position: absolute; left: 20px; bottom: 20px; display: flex; align-items: center; gap: 10px; background: rgba(12,16,24,.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.16); color: #fff; border-radius: 999px; padding: 10px 18px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; cursor: pointer" style-hover="background: rgba(12,16,24,.82)">
         <span style="color: #7db2ff">●</span> iPhone 15 Pro Max · Sellado · US$ 1.499 →
@@ -344,11 +353,11 @@ html{background:var(--bg);}
 
   <!-- FEATURED TILES -->
   <section data-screen-label="Destacados" style="max-width: 1180px; margin: 0 auto; padding: 18px 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px">
-    <div style="background: var(--tile); border-radius: 28px; padding: 40px 38px; min-height: 200px; display: flex; flex-direction: column; justify-content: center">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .16em; color: var(--ax, #0A5CFF); text-shadow: 0 0 18px color-mix(in srgb, var(--ax, #0A5CFF) 70%, transparent)">USADOS CERTIFICADOS</div>
-      <h3 style="margin: 12px 0 8px; color: #fff; font-size: 29px; font-weight: 700; letter-spacing: -0.02em">Chequeados en 40 puntos.</h3>
-      <p style="margin: 0 0 18px; color: #98a2b5; font-size: 14.5px; line-height: 1.5">Batería medida, estética real y 90 días de garantía escrita.</p>
-      <button onclick="{{ goUsados }}" style="align-self: flex-start; background: none; border: none; padding: 0; cursor: pointer; color: #9cc0ff; font-size: 14.5px; font-weight: 600" style-hover="color: #fff">Ver usados →</button>
+    <div style="background: var(--surf2); border-radius: 28px; padding: 40px 38px; min-height: 200px; display: flex; flex-direction: column; justify-content: center">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .16em; color: var(--ax, #0A5CFF)">USADOS CERTIFICADOS</div>
+      <h3 style="margin: 12px 0 8px; color: var(--tx); font-size: 29px; font-weight: 700; letter-spacing: -0.02em">Chequeados en 40 puntos.</h3>
+      <p style="margin: 0 0 18px; color: var(--mut3); font-size: 14.5px; line-height: 1.5">Batería medida, estética real y 90 días de garantía escrita.</p>
+      <button onclick="{{ goUsados }}" style="align-self: flex-start; background: none; border: none; padding: 0; cursor: pointer; color: var(--ax, #0A5CFF); font-size: 14.5px; font-weight: 600" style-hover="filter: brightness(.8)">Ver usados →</button>
     </div>
     <div style="background: var(--surf2); border-radius: 28px; padding: 40px 38px; min-height: 200px; display: flex; flex-direction: column; justify-content: center">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .16em; color: var(--mut)">SELLADOS</div>
@@ -441,7 +450,7 @@ html{background:var(--bg);}
           <div style="font-size: 12.5px; color: var(--tx1); font-weight: 600; margin-top: 2px">{{ minBatLabel }}</div>
         </div>
         <sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}">
-          <button onclick="{{ clearFilters }}" style="border: 1px solid var(--bd1); background: var(--surf); color: var(--tx1); border-radius: 999px; padding: 9px 14px; font-size: 13px; font-weight: 600; cursor: pointer" style-hover="border-color: #b9c2d0; color: var(--tx)">Limpiar filtros ×</button>
+          <button onclick="{{ clearFilters }}" style="border: 1px solid var(--bd1); background: var(--surf); color: var(--tx1); border-radius: 999px; padding: 9px 14px; font-size: 13px; font-weight: 600; cursor: pointer" style-hover="border-color: var(--mut); color: var(--tx)">Limpiar filtros ×</button>
         </sc-if>
       </aside>
 
@@ -450,7 +459,7 @@ html{background:var(--bg);}
         <sc-if value="{{ hasPills }}" hint-placeholder-val="{{ false }}">
           <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px">
             <sc-for list="{{ pills }}" as="p" hint-placeholder-count="2">
-              <button onclick="{{ p.clear }}" style="display: flex; align-items: center; gap: 7px; background: color-mix(in srgb, var(--ax, #0A5CFF) 9%, #fff); border: 1px solid color-mix(in srgb, var(--ax, #0A5CFF) 30%, #fff); color: var(--ax, #0A5CFF); border-radius: 999px; padding: 6px 13px; font-size: 12.5px; font-weight: 600; cursor: pointer" style-hover="filter: brightness(.95)">{{ p.label }} <span style="opacity:.7">×</span></button>
+              <button onclick="{{ p.clear }}" style="display: flex; align-items: center; gap: 7px; background: color-mix(in srgb, var(--ax, #0A5CFF) 12%, var(--surf)); border: 1px solid color-mix(in srgb, var(--ax, #0A5CFF) 32%, var(--surf)); color: var(--ax, #0A5CFF); border-radius: 999px; padding: 6px 13px; font-size: 12.5px; font-weight: 600; cursor: pointer" style-hover="filter: brightness(.95)">{{ p.label }} <span style="opacity:.7">×</span></button>
             </sc-for>
           </div>
         </sc-if>
@@ -463,7 +472,7 @@ html{background:var(--bg);}
                   <div role="img" aria-label="{{ item.name }}" style="{{ item.bgStyle }}"></div>
                 </sc-if>
                 <sc-if value="{{ item.imgFail }}" hint-placeholder-val="{{ false }}">
-                  <div style="width: 100%; height: 100%; background: repeating-linear-gradient(45deg, var(--bd4) 0 14px, #f6f8fb 14px 28px); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mut2); padding: 12px; text-align: center">[ {{ item.ph }} ]</div>
+                  <div style="width: 100%; height: 100%; background: repeating-linear-gradient(45deg, var(--bd4) 0 14px, var(--surf2) 14px 28px); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mut2); padding: 12px; text-align: center">[ {{ item.ph }} ]</div>
                 </sc-if>
                 <sc-if value="{{ item.isSellado }}" hint-placeholder-val="{{ true }}">
                   <span style="position: absolute; top: 12px; left: 12px; background: var(--ax, #0A5CFF); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: .1em; padding: 5px 10px; border-radius: 999px; box-shadow: 0 4px 16px color-mix(in srgb, var(--ax, #0A5CFF) 55%, transparent)">SELLADO</span>
@@ -499,37 +508,37 @@ html{background:var(--bg);}
   </section>
 
   <!-- SERVICE -->
-  <section id="servicio" data-screen-label="Servicio técnico" style="background: #0a0e15; padding: 80px 24px; scroll-margin-top: 60px">
+  <section id="servicio" data-screen-label="Servicio técnico" style="background: var(--sect); padding: 80px 24px; scroll-margin-top: 60px">
     <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 52px; align-items: start">
       <div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .18em; color: var(--ax, #0A5CFF); text-shadow: 0 0 20px color-mix(in srgb, var(--ax, #0A5CFF) 70%, transparent)">SERVICIO TÉCNICO PROFESIONAL</div>
-        <h2 style="margin: 16px 0 12px; color: #fff; font-size: clamp(30px, 3.4vw, 42px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1">Reparamos tu equipo, en el día.</h2>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .18em; color: var(--ax, #0A5CFF)">SERVICIO TÉCNICO PROFESIONAL</div>
+        <h2 style="margin: 16px 0 12px; color: var(--tx); font-size: clamp(30px, 3.4vw, 42px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1">Reparamos tu equipo, en el día.</h2>
         <p style="margin: 0 0 26px; color: var(--mut4); font-size: 15.5px; line-height: 1.6; max-width: 460px; text-wrap: pretty">Técnicos certificados, repuestos originales y AAA+, y diagnóstico sin cargo. Retirás tu equipo funcionando o no pagás.</p>
         <div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #1c2330"><span style="color: #e8edf6; font-size: 15px; font-weight: 500">Cambio de pantalla</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">desde $ 50.000</span></div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #1c2330"><span style="color: #e8edf6; font-size: 15px; font-weight: 500">Cambio de batería</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">desde $ 40.000</span></div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #1c2330"><span style="color: #e8edf6; font-size: 15px; font-weight: 500">Pin de carga</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">desde $ 35.000</span></div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #1c2330"><span style="color: #e8edf6; font-size: 15px; font-weight: 500">Placa · equipos mojados</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">diagnóstico sin cargo</span></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--sectbd)"><span style="color: var(--tx1); font-size: 15px; font-weight: 500">Cambio de pantalla</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">desde $ 50.000</span></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--sectbd)"><span style="color: var(--tx1); font-size: 15px; font-weight: 500">Cambio de batería</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">desde $ 40.000</span></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--sectbd)"><span style="color: var(--tx1); font-size: 15px; font-weight: 500">Pin de carga</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">desde $ 35.000</span></div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--sectbd)"><span style="color: var(--tx1); font-size: 15px; font-weight: 500">Placa · equipos mojados</span><span style="color: var(--mut4); font-family: 'JetBrains Mono', monospace; font-size: 12.5px">diagnóstico sin cargo</span></div>
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px">
-          <span style="border: 1px solid #263045; color: #b6c1d4; border-radius: 999px; padding: 7px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px">90 DÍAS DE GARANTÍA ESCRITA</span>
-          <span style="border: 1px solid #263045; color: #b6c1d4; border-radius: 999px; padding: 7px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px">REPUESTOS ORIGINALES Y AAA+</span>
+          <span style="border: 1px solid var(--sectbd); color: var(--tx1); border-radius: 999px; padding: 7px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px">90 DÍAS DE GARANTÍA ESCRITA</span>
+          <span style="border: 1px solid var(--sectbd); color: var(--tx1); border-radius: 999px; padding: 7px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px">REPUESTOS ORIGINALES Y AAA+</span>
         </div>
       </div>
 
-      <div style="background: #10151f; border: 1px solid #202939; border-radius: 24px; padding: 30px">
-        <h3 style="margin: 0 0 6px; color: #fff; font-size: 21px; font-weight: 700; letter-spacing: -0.01em">Cotizá tu reparación</h3>
+      <div style="background: var(--sectcard); border: 1px solid var(--sectbd); border-radius: 24px; padding: 30px">
+        <h3 style="margin: 0 0 6px; color: var(--tx); font-size: 21px; font-weight: 700; letter-spacing: -0.01em">Cotizá tu reparación</h3>
         <p style="margin: 0 0 20px; color: var(--mut5); font-size: 13.5px">Elegí tu equipo y la falla. Te damos un estimado al instante.</p>
-        <label style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .14em; color: #7d8798; margin-bottom: 7px">EQUIPO</label>
-        <select value="{{ qDevice }}" onchange="{{ setQDevice }}" style="width: 100%; box-sizing: border-box; padding: 13px 14px; background: var(--tile); border: 1px solid #263045; color: #eef2f8; border-radius: 12px; font-size: 14.5px; outline: none; cursor: pointer; margin-bottom: 16px">
+        <label style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .14em; color: var(--mut); margin-bottom: 7px">EQUIPO</label>
+        <select value="{{ qDevice }}" onchange="{{ setQDevice }}" style="width: 100%; box-sizing: border-box; padding: 13px 14px; background: var(--surf); border: 1px solid var(--sectbd); color: var(--tx); border-radius: 12px; font-size: 14.5px; outline: none; cursor: pointer; margin-bottom: 16px">
           <option value="iPhone">iPhone</option>
           <option value="Samsung">Samsung</option>
           <option value="Xiaomi">Xiaomi</option>
           <option value="Motorola">Motorola</option>
           <option value="Otro">Otro equipo</option>
         </select>
-        <label style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .14em; color: #7d8798; margin-bottom: 7px">REPARACIÓN</label>
-        <select value="{{ qRep }}" onchange="{{ setQRep }}" style="width: 100%; box-sizing: border-box; padding: 13px 14px; background: var(--tile); border: 1px solid #263045; color: #eef2f8; border-radius: 12px; font-size: 14.5px; outline: none; cursor: pointer">
+        <label style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .14em; color: var(--mut); margin-bottom: 7px">REPARACIÓN</label>
+        <select value="{{ qRep }}" onchange="{{ setQRep }}" style="width: 100%; box-sizing: border-box; padding: 13px 14px; background: var(--surf); border: 1px solid var(--sectbd); color: var(--tx); border-radius: 12px; font-size: 14.5px; outline: none; cursor: pointer">
           <option value="Pantalla">Pantalla (cristal + táctil)</option>
           <option value="Bateria">Batería</option>
           <option value="Pin">Pin de carga</option>
@@ -538,12 +547,12 @@ html{background:var(--bg);}
           <option value="Otra">Otra falla</option>
         </select>
         <div style="margin-top: 18px; background: color-mix(in srgb, var(--ax, #0A5CFF) 12%, transparent); border: 1px solid color-mix(in srgb, var(--ax, #0A5CFF) 40%, transparent); border-radius: 14px; padding: 16px 18px">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .16em; color: #8fb5ff">ESTIMADO</div>
-          <div style="color: #fff; font-size: 18px; font-weight: 700; margin-top: 5px; font-variant-numeric: tabular-nums">{{ quoteText }}</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .16em; color: var(--ax, #0A5CFF)">ESTIMADO</div>
+          <div style="color: var(--tx); font-size: 18px; font-weight: 700; margin-top: 5px; font-variant-numeric: tabular-nums">{{ quoteText }}</div>
           <div style="color: var(--mut5); font-size: 12px; margin-top: 4px">{{ quoteSub }}</div>
         </div>
         <a href="{{ waQuoteHref }}" target="_blank" rel="noopener" style="display: block; text-align: center; text-decoration: none; margin-top: 16px; background: #1fae5c; color: #fff; border-radius: 999px; padding: 14px; font-size: 15px; font-weight: 600" style-hover="filter: brightness(.92)">Enviar por WhatsApp</a>
-        <div style="text-align: center; color: #6f7a8e; font-size: 11.5px; margin-top: 10px">Respondemos en minutos · Lu a Sá, 10–19 h</div>
+        <div style="text-align: center; color: var(--mut2); font-size: 11.5px; margin-top: 10px">Respondemos en minutos · Lu a Sá, 10–19 h</div>
       </div>
     </div>
   </section>
@@ -655,7 +664,7 @@ html{background:var(--bg);}
             <div role="img" aria-label="{{ qv.name }}" style="{{ qv.bgStyle }}"></div>
           </sc-if>
           <sc-if value="{{ qv.imgFail }}" hint-placeholder-val="{{ false }}">
-            <div style="position: absolute; inset: 0; background: repeating-linear-gradient(45deg, var(--bd4) 0 14px, #f6f8fb 14px 28px); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--mut2)">[ {{ qv.ph }} ]</div>
+            <div style="position: absolute; inset: 0; background: repeating-linear-gradient(45deg, var(--bd4) 0 14px, var(--surf2) 14px 28px); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--mut2)">[ {{ qv.ph }} ]</div>
           </sc-if>
         </div>
         <div style="padding: 32px 32px 28px">
@@ -766,7 +775,7 @@ html{background:var(--bg);}
 
         <sc-if value="{{ coDone }}" hint-placeholder-val="{{ false }}">
           <div style="text-align: center; padding: 12px 4px 6px">
-            <div style="width: 64px; height: 64px; border-radius: 999px; background: color-mix(in srgb, var(--ax, #0A5CFF) 12%, #fff); color: var(--ax, #0A5CFF); font-size: 28px; display: grid; place-items: center; margin: 0 auto">✓</div>
+            <div style="width: 64px; height: 64px; border-radius: 999px; background: color-mix(in srgb, var(--ax, #0A5CFF) 14%, var(--surf)); color: var(--ax, #0A5CFF); font-size: 28px; display: grid; place-items: center; margin: 0 auto">✓</div>
             <h3 style="margin: 18px 0 6px; font-size: 23px; font-weight: 700; letter-spacing: -0.02em">¡Pedido confirmado!</h3>
             <div style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .12em; background: var(--surf2); border-radius: 999px; padding: 7px 16px; color: var(--tx1)">{{ orderId }}</div>
             <p style="margin: 16px auto 0; max-width: 360px; font-size: 14px; color: var(--mut3); line-height: 1.6">Te escribimos por WhatsApp para coordinar el pago y la entrega. Esto es una demo: no se procesó ningún pago.</p>
@@ -1038,8 +1047,8 @@ class Component extends DCLogic {
     const stepNames = ['Datos', 'Entrega', 'Pago'];
     const coSteps = stepNames.map((n, i) => ({
       label: n,
-      bar: { height: '4px', borderRadius: '999px', background: i < S.coStep ? accent : '#e8ecf3', transition: 'background .2s' },
-      lab: { marginTop: '6px', fontFamily: "'JetBrains Mono', monospace", fontSize: '9.5px', letterSpacing: '.1em', color: i < S.coStep ? '#131720' : '#a5adba', textTransform: 'uppercase' }
+      bar: { height: '4px', borderRadius: '999px', background: i < S.coStep ? accent : 'var(--bd1)', transition: 'background .2s' },
+      lab: { marginTop: '6px', fontFamily: "'JetBrains Mono', monospace", fontSize: '9.5px', letterSpacing: '.1em', color: i < S.coStep ? 'var(--tx)' : 'var(--mut2)', textTransform: 'uppercase' }
     }));
     const radioBase = { display: 'flex', gap: '12px', alignItems: 'flex-start', border: '1px solid var(--bd1)', borderRadius: '14px', padding: '14px 16px', cursor: 'pointer', marginBottom: '10px', transition: 'all .15s' };
     const radioOn = { ...radioBase, borderColor: accent, background: 'color-mix(in srgb, ' + accent + ' 6%, var(--surf))', boxShadow: '0 0 0 1px ' + accent };
@@ -1058,7 +1067,7 @@ class Component extends DCLogic {
     const coNextStyle = {
       flex: 1, border: 'none', borderRadius: '999px', padding: '13px', fontSize: '14.5px', fontWeight: 600,
       cursor: coNextDisabled ? 'not-allowed' : 'pointer',
-      background: coNextDisabled ? '#dfe4ec' : accent,
+      background: coNextDisabled ? 'var(--surf2)' : accent,
       color: coNextDisabled ? '#98a1b0' : '#fff',
       boxShadow: coNextDisabled ? 'none' : '0 10px 26px color-mix(in srgb, ' + accent + ' 30%, transparent)',
       transition: 'all .2s'
@@ -1074,7 +1083,6 @@ class Component extends DCLogic {
 
     return {
       showPromo: this.props.promoBanner ?? true,
-      themeGlyph: this.state.theme === 'dark' ? '☀️' : '🌙',
       toggleTheme: () => this.setState({ theme: this.state.theme === 'dark' ? 'light' : 'dark' }),
       cartCount,
       // hero
